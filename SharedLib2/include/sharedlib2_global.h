@@ -1,0 +1,12 @@
+#ifndef SHAREDLIB2_GLOBAL_H
+#define SHAREDLIB2_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(SHAREDLIB2_LIBRARY)
+#  define SHAREDLIB2SHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define SHAREDLIB2SHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // SHAREDLIB2_GLOBAL_H
