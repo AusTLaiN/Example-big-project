@@ -9,7 +9,11 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += main.cpp
+SOURCES += \
+    src/main.cpp
+
+
+HEADERS +=
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -21,3 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../SharedLib2/release/ -lSharedLib2
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../SharedLib2/debug/ -lSharedLib2
+else:unix: LIBS += -L$$OUT_PWD/../SharedLib2/ -lSharedLib2
+
+INCLUDEPATH += $$PWD/../SharedLib2/include
+DEPENDPATH += $$PWD/../SharedLib2
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../SharedLib3/release/ -lSharedLib3
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../SharedLib3/debug/ -lSharedLib3
+else:unix: LIBS += -L$$OUT_PWD/../SharedLib3/ -lSharedLib3
+
+INCLUDEPATH += $$PWD/../SharedLib3
+DEPENDPATH += $$PWD/../SharedLib3
